@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  frontend:
+    build:
+      context: ./frontend
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend-gateway-server
+
+  backend-api-server:
+    build:
+      context: ./backend-api-server
+    ports:
+      - "5000:5000"
+
+  backend-gateway-server:
+    build:
+      context: ./backend-gateway-server
+    ports:
+      - "8080:8080"
+    depends_on:
+      - backend-api-server
+
+networks:
+  default:
+    driver: bridge
