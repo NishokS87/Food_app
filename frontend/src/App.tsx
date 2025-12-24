@@ -16,7 +16,6 @@ export interface CartItem {
 
 const App: React.FC = () => {
   const [cart, setCart] = useState<CartItem[]>([]);
-  const [orderId, setOrderId] = useState<string>('');
 
   const addToCart = (item: CartItem) => {
     setCart((prevCart) => {
@@ -44,10 +43,6 @@ const App: React.FC = () => {
         item.id === itemId ? { ...item, quantity } : item
       )
     );
-  };
-
-  const clearCart = () => {
-    setCart([]);
   };
 
   return (

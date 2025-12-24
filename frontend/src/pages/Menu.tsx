@@ -24,10 +24,6 @@ const Menu: React.FC<MenuProps> = ({ addToCart, cart }) => {
   const [error, setError] = useState('');
   const history = useHistory();
 
-  useEffect(() => {
-    loadMenu();
-  }, [restaurantId]);
-
   const loadMenu = async () => {
     try {
       setLoading(true);
@@ -41,6 +37,11 @@ const Menu: React.FC<MenuProps> = ({ addToCart, cart }) => {
       setLoading(false);
     }
   };
+
+  useEffect(() => {
+    loadMenu();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [restaurantId]);
 
   const handleAddToCart = (item: MenuItem) => {
     addToCart({
